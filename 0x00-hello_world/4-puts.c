@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 /**
  * Printing with puts command
  * Main: entry point
