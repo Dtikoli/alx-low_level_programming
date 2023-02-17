@@ -6,7 +6,7 @@
  * main - Entry point
  * Description: Prints a random number and indicates
  * whether is is positive, zero or negative.
- * Return: Always 0 (Success) 
+ * Return: Always 0 (Succes).
  */
 int main(void)
 {
