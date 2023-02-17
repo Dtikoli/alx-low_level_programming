@@ -7,8 +7,8 @@
  */
 int main(void)
 {
-	char ch[]="0123456789";
-	
-	printf("%s\n",ch);
-	return (0);
+	char ch[] = "0123456789";
+
+	printf("%s\n", ch);
+return (0);
 }
