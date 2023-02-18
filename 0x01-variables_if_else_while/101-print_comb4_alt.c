@@ -11,29 +11,28 @@
  */
 int main(void)
 {
-	int h, t, o;
+	int i, j, k, l;
 
-	for (h = '0'; h < '9'; h++)
+	for (i = 0; i < 1000; i++)
 	{
-		t = h + 1;
-		while (t <= '9')
+		j = i / 100; /* hundreds */
+		k = (i / 10) % 10; /* tens */
+		l = i % 10; /* singles */
+
+		if (j < k && k < l)
 		{
-			o = t + 1;
-			for ( ;o <= '9'; o++)
+			putchar(j + '0');
+			putchar(k + '0');
+			putchar(l + '0');
+
+			if (i < 700)
 			{
-				putchar(h);
-				putchar(t);
-                        	putchar(o);
-				if (h < '7')
-				{
 				putchar(44);
 				putchar(32);
-				}
 			}
-			t++;
 		}
 	}
-
 	putchar('\n');
+
 	return (0);
 }
