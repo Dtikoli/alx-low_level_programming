@@ -31,7 +31,7 @@ int main(void)
 							putchar(e);
 							putchar(i);
 					
-							if (!(h == '9' && g == '8' && e == '9' && i == '9'))							
+							if (g < '8')							
 							putchar(',');
 							putchar(' ');
 				 		}
