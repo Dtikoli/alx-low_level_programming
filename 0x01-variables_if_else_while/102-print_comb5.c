@@ -1,48 +1,47 @@
 #include <stdio.h>
-
 /**
- * main - Prints numbers between 00 to 99.
- *
- * Return: Always 0 (Success)
+ * main - main block
+ * Description: Print all possible combinations of two two-digit numbers.
+ * Numbers should range from 0 to 99.
+ * The two numbers should be separated by a space.
+ * All numbers should be printed with two digits. 1 should be printed as 01.
+ * Combination of numbers must be separated by a comma followed by a space.
+ * Combinations of numbers should be printed in ascending order.
+ * `00 01` and `01 00` are considered as the same combination.
+ * Return: 0
  */
 int main(void)
 {
-	int i, e, g, h, op1, op2;
+	int i, j;
+	int a, b, c, d;
 
-	h = '0';
-	while (h <= '9')
+	for (i = 0; i < 100; i++)
+	{
+		a = i / 10; /* doubles fnum */
+		b = i % 10; /* singles fnum */
+
+		for (j = 0; j < 100; j++)
 		{
-			g = '0';
-			while (g <= '9')
+			c = j / 10; /* doubles snum */
+			d = j % 10; /* singles snum */
+
+			if (a < c || (a == c && b < d))
 			{
-				e = '0';
-				while (e <= '9')
+				putchar(a + '0');
+				putchar(b + '0');
+				putchar(32);
+				putchar(c + '0');
+				putchar(d + '0');
+
+				if (!(a == 9 && b == 8))
 				{
-					i = '0';
-					while (i <= '9')
-					{
-						op1 = (h * 10) + g;
-						op2 = (e * 10) + i;
-						if (op1 < op2)
-						{
-							putchar(h);
-							putchar(g);
-							putchar(' ');
-							putchar(e);
-							putchar(i);
-					
-							if (g < '8')							
-							putchar(',');
-							putchar(' ');
-				 		}
-						i++;
-					}
-					e++;
+					putchar(44);
+					putchar(32);
 				}
-				g++;
 			}
-			h++;
 		}
-	putchar('\n');
+	}
+	putchar(10);
+
 	return (0);
 }
