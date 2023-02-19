@@ -26,8 +26,8 @@ int main(void)
                         	putchar(o);
 				if (h < '7')
 				{
-				putchar(44);
-				putchar(32);
+					putchar(44);
+					putchar(32);
 				}
 			}
 			t++;
