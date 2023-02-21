@@ -20,24 +20,24 @@ void print_times_table(int n)
 				p = (r * c);
 				if (p <= 9)
 				{
-					_putchar(',');
-					_putchar(' ');
-					_putchar(' ');
-					_putchar(' ');
+					_putchar(44);
+					_putchar(32);
+					_putchar(32);
+					_putchar(32);
 					_putchar('0' + p);
 				}
 				else if (p < 100)
 				{
-					_putchar(',');
-					-putchar(' ');
-					_putchar(' ');
+					_putchar(44);
+					-putchar(32);
+					_putchar(32);
 					_putchar('0' + (p / 10));
 					_putchar('0' + (p % 10));
 				}
 				else if (p >= 100)
 				{
-					_putchar(',');
-					_putchar(' ');
+					_putchar(44);
+					_putchar(32);
 					_putchar('0' + (p / 100));
 					_putchar('0' + ((p / 10) % 10));
 					_putchar('0' + (p % 10));
