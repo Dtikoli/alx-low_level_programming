@@ -29,7 +29,7 @@ void print_times_table(int n)
 				else if (p < 100)
 				{
 					_putchar(44);
-					-putchar(32);
+					_putchar(32);
 					_putchar(32);
 					_putchar('0' + (p / 10));
 					_putchar('0' + (p % 10));
