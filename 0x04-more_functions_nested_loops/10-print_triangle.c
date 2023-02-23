@@ -7,7 +7,7 @@
 void print_triangle(int size)
 {
 	int h;	/* height of triangle */
-	int w;	/* leading empty spaces at height */ 
+	int w;	/* leading empty spaces at height */
 	int l;	/* length of triangle */
 
 	if (size <= 0)
