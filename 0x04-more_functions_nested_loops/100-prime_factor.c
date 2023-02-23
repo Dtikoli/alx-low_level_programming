@@ -6,7 +6,8 @@
  */
 int main(void)
 {
-	long int n, pf;
+	long int n;
+	long int pf; /* Prime factors */
 
 	n = 612852475143;
 	for (pf = 2; pf < n; pf++)
