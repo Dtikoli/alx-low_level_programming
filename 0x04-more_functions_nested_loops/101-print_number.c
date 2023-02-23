@@ -7,9 +7,9 @@
  */
 void print_number(int n)
 {
-	int a;	/* Absolute value of n */
-	int b;	/* Base 10 convertor */
-	int p;	/* Power of 10 */
+	int a; /* Absolute value of n */
+	int b; /* Base 10 convertor */
+	int p; /* Power of 10 */
 
 	if (n < 0)
 	{
