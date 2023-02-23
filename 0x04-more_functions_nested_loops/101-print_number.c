@@ -29,7 +29,6 @@ void print_number(int n)
 		b /= 10;
 		p *= 10;
 	}
-
 	for (; p >= 1; p /= 10)
 	{
 		_putchar(((a / p) % 10) + 48);
