@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define MAX 1000000000
+#define FACTOR 100
 
 /**
  * main - Prints first 98 fibonacci numbers
@@ -10,30 +10,30 @@
 int main(void)
 {
 	int c;
-	unsigned long int n1, n2, fn;
-	unsigned long int n11, n22, fn1, fn2;
+	long int n1, n2, fn;
+	long int n11, n22, fn1, fn2;
 
 	n1 = 1;
 	n2 = 2;
-	printf("%lu, %lu", n1, n2);
-	for (c = 3; c < 90; c++)
+	printf("%ld, %ld", n1, n2);
+	for (c = 3; c < 92; c++)
 	{
 		fn = n1 + n2;
 		n1 = n2;
 		n2 = fn;
-		printf(", %lu", fn);
+		printf(", %ld", fn);
 	}
-	n1 = n1 / MAX;
-	n2 = n2 / MAX;
-	n11 = n1 % MAX;
-	n22 = n2 % MAX;
-	for (; c <= 98; c++)		
-	{	
-		fn1 = (n11 + n22) / MAX;
-		fn2 = (n11 + n22) % MAX;
+	n1 = n1 / FACTOR;
+	n2 = n2 / FACTOR;
+	n11 = n1 % FACTOR;
+	n22 = n2 % FACTOR;
+	for (; c <=98; c++)
+	{
+		fn1 = (n11 + n22) / FACTOR;
+		fn2 = (n11 + n22) % FACTOR;
 		fn = n1 + n2 + fn1;
-		printf(", %lu", fn);
-		printf("%lu", fn2);
+		printf(", %ld", fn);
+		printf("%02ld", fn2);
 		n1 = n2;
 		n11 = n22;
 		n2 = fn;
