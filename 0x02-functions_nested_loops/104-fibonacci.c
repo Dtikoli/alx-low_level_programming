@@ -1,4 +1,5 @@
 #include <stdio.h>
+#define FACTOR 1000000000
 
 /**
  * main - Prints the first 98 Fibonacci numbers
@@ -7,16 +8,17 @@
  */
 int main(void)
 {
-	int c, boolean1, boolean2;
-	long int n1, n2, fn, fn2, n11, n22;
+	int c;
+	int b1, b2; /*True or False boolean operators*/
+	long int n1, n2, fn, fn1, fn2, n11, n22;
 
 	n1 = 1;
 	n2 = 2;
-	boolean1 =  boolean2 = 1;
+	b1 = b2 = 1;
 	printf("%ld, %ld", n1, n2);
 	for (c = 0; c < 96; c++)
 	{
-		if (boolean1)
+		if (b1)
 		{
 			fn = n1 + n2;
 			printf(", %ld", fn);
@@ -25,25 +27,26 @@ int main(void)
 		}
 		else
 		{
-			if (boolean2)
+			if (b2)
 			{
-				n11 = n1 % 1000000000;
-				n22 = n2 % 1000000000;
-				n1 = n1 / 1000000000;
-				n2 = n2 / 1000000000;
-				boolean2 = 0;
+				n11 = n1 % FACTOR;
+				n22 = n2 % FACTOR;
+				n1 = n1 / FACTOR;
+				n2 = n2 / FACTOR;
+				b2 = 0;
 			}
-			fn2 = (n11 + n22);
-			fn = n1 + n2 + (fn2 / 1000000000);
+			fn1 = (n11 + n22) / FACTOR;
+			fn2 = (n11 + n22) % FACTOR;
+			fn = n1 + n2 + fn1;
 			printf(", %ld", fn);
-			printf("%ld", fn2 % 1000000000);
+			printf("%ld", fn2);
 			n1 = n2;
 			n11 = n22;
 			n2 = fn;
-			n22 = (fn2 % 1000000000);
+			n22 = fn2;
 		}
-		if (((n1 + n2) < 0) && boolean1 == 1)
-			boolean1 = 0;
+		if (((n1 + n2) < 0) && b1 == 1)
+			b1 = 0;
 	}
 	printf("\n");
 	return (0);
