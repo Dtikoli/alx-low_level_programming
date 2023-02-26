@@ -8,12 +8,10 @@
  */
 int main(void)
 {
-	int c;
-	int b1, b2; /*True or False boolean operators*/
+	int c, b1, b2; /*b1 and b2 are True or False booleans*/
 	long int n1, n2, fn, fn1, fn2, n11, n22;
 
-	n1 = 1;
-	n2 = 2;
+	n1 = 1,	n2 = 2;
 	b1 = b2 = 1;
 	printf("%ld, %ld", n1, n2);
 	for (c = 0; c < 96; c++)
