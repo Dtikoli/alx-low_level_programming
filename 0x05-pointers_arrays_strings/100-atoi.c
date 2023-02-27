@@ -1,0 +1,24 @@
+#include "main.h"
+
+/**
+ * _atoi - convert a string to an integer
+ * @s: string to convert
+ * Return: integer
+ */
+int _atoi(char *s)
+{
+	unsigned int num = 0;
+	int sign = 1;
+
+	while (*s)
+	{
+		if (*s == '-')
+			sign *= -1;
+		else if (*s >= 48 && *s <= 57)
+			numb = numb * 10 + (*s - 48);
+		else if (numb > 0)
+			break;
+		s++;
+	}
+	return (number * sign);
+}
