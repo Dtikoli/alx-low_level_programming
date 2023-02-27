@@ -15,8 +15,8 @@ int _atoi(char *s)
 		if (*s == '-')
 			sign *= -1;
 		else if (*s >= 48 && *s <= 57)
-			numb = numb * 10 + (*s - 48);
-		else if (numb > 0)
+			num = num * 10 + (*s - 48);
+		else if (num > 0)
 			break;
 		s++;
 	}
