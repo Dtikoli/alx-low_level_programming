@@ -16,7 +16,7 @@ int _atoi(char *s)
 			sign *= -1;
 		else if (*s >= 48 && *s <= 57)
 			num = num * 10 + (*s - 48);
-		else if (num > 0)
+		if (s[i + 1] < 48 || s[i + 1] > 57)
 			break;
 		s++;
 	}
