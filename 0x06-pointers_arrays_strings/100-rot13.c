@@ -1,5 +1,4 @@
 #include "main.h"
-#define ROT13 13 /* Changes the letter to the next 13th letter */
 
 /**
  * rot13 - encodes a string using rot13
@@ -8,15 +7,20 @@
  */
 char *rot13(char *s)
 {
-	int i;
+	int i, j;
+	char decode[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char encode[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
 	for (i = 0; s[i]; i++)
 	{
-		if ((s[i] >= 'A' && s[i] <= 'M') || (s[i] >= 'a' && s[i] <= 'm'))
-			s[i] += ROT13;
-		else if ((s[i] >= 'N' && s[i] <= 'Z') || (s[i] >= 'n' && s[i] <= 'z'))
-			s[i] -= ROT13;
+		for (j = 0; decode[j]; j++)
+		{
+			if (s[i] == decode[j])
+			{
+				s[i] = encode[j];
+				break;
+			}
+		}
 	}
 	return (s);
 }
-
