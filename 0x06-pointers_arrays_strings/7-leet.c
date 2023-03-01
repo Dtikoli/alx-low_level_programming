@@ -8,7 +8,7 @@
 char *leet(char *s)
 {
 
-	char decode[]= "aAeEoOtTlL";
+	char decode[] = "aAeEoOtTlL";
 	char encode[] = "4433007711";
 
 	int i, j;
