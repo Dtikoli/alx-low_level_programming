@@ -5,7 +5,6 @@
  * @s: string to manipulate
  * Return: string
  */
-
 char *leet(char *s)
 {
 
@@ -22,7 +21,6 @@ char *leet(char *s)
 				s[j] = encode[i];
 		}
 	}
-
 	return (s);
 }
 
