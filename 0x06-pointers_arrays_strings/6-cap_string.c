@@ -1,5 +1,5 @@
 #include "main.h"
-#define DIFF 32
+#define DIFF 32 /* Difference between lower and upeercase */
 
 /**
  * cap_string - capitalize first letter of each word

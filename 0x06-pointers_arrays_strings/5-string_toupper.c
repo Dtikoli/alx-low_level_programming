@@ -3,7 +3,7 @@
 
 /**
  * string_toupper - Change all lowercase letters to uppercase
- * @c: string
+ * @s: string
  * Return: s
  */
 
