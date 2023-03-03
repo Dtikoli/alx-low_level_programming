@@ -8,7 +8,6 @@
  */
 void print_diagsums(int *a, int size)
 {
-
         int diag_sum1 = 0;
         int diag_sum2 = 0;
         int row, i;
