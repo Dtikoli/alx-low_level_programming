@@ -18,7 +18,7 @@ unsigned int _strspn(char *s, char *accept)
                 if (s[i] == accept[j]) /*record at first match*/
                         c++;
                 else
-                        return (c);/*return if idx doesn't match*/
+                        return (c); /*return record if next i doesn't match*/
         }
         return (c); /* return num of all match till end */
 }
