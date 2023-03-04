@@ -20,5 +20,5 @@ unsigned int _strspn(char *s, char *accept)
 		else
 			return (c); /*return record if next i doesn't match*/
 	}
-		return (c); /* return num of all match till end */
+	return (c); /* return num of all match till end */
 }
