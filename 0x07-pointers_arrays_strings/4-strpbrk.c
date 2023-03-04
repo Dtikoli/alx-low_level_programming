@@ -10,12 +10,12 @@ char *_strpbrk(char *s, char *accept)
 {
 	int i, j;
 
-	for (i = 0; s[i]; i++) /*iterate through string*/
+	for (i = 0; s[i]; i++)
 	{
-		for (j = 0; accept[j] && s[i] != accept[j]; j++) /* find a match */
+		for (j = 0; accept[j] && s[i] != accept[j]; j++)
 			;	
-		if (s[i] == accept[j]) /* set pointer to first occurrenc of match */
+		if (s[i] == accept[j])
 			return (&s[i]);
 	}
-	return (0); /* return NULL if no matches */
+	return (0);
 }
