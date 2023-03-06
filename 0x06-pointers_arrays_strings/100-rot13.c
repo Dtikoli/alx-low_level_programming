@@ -13,14 +13,10 @@ char *rot13(char *s)
 
 	for (i = 0; s[i]; i++)
 	{
-		for (j = 0; decode[j]; j++)
-		{
-			if (s[i] == decode[j])
-			{
-				s[i] = encode[j];
-				break;
-			}
-		}
+		for (j = 0; decode[j] && s[i] != decode[j]; j++)
+			;
+		if (s[i] == decode[j])
+			s[i] = encode[j];
 	}
 	return (s);
 }
