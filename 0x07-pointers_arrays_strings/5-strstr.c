@@ -5,8 +5,9 @@
  * _strstr - locates a substring
  * @haystack: string to be scanned
  * @needle: string containing the sequence of characters to match
- * Return: pointer to the beginning of the located substring, or NULL if the
-*/
+ * Return: pointer to the beginning of the located substring,
+ * or NULL if the substring is not found.
+ */
 char *_strstr(char *haystack, char *needle)
 {
 	int i, j;
@@ -17,7 +18,7 @@ char *_strstr(char *haystack, char *needle)
 			if (haystack[i + j] != needle[j])
 				break;
 		if (!needle[j])
-			return (haystack + i);
+			return (&haystack[i]);
 	}
 	return (NULL);
 }
