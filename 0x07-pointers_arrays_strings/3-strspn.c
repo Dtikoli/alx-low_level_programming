@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _strspn - return length of string that matches values consistently
+ * _strspn - returns the length of a prefix substring
  * @s: string to search
  * @accept: target matches
  * Return: number of bytes consecutively matched
@@ -15,10 +15,10 @@ unsigned int _strspn(char *s, char *accept)
 	{
 		for (j = 0; accept[j] && s[i] != accept[j]; j++) /*find a match*/
 			;
-		if (s[i] == accept[j]) /*record at first match*/
+		if (s[i] == accept[j]) /*record all consecutive matches*/
 			c++;
 		else
-			return (c); /*return record if next i doesn't match*/
+			break; /*break the loop if next i doesn't match*/
 	}
-	return (c); /* return num of all match till end */
+	return (c); /* return records of all consecutive matches */
 }
