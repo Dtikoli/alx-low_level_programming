@@ -12,11 +12,11 @@ int _atoi(char *s)
 
 	while (*s)
 	{
-		if (num == 0 && *s == '-')
+		if (*s == '-')
 			sign *= -1;
 		else if (*s >= 48 && *s <= 57)
 			num = num * 10 + (*s - 48);
-		else
+		else if (num > 0)
 			break;
 		s++;
 	}
