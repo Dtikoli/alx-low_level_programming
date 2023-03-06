@@ -12,12 +12,14 @@ char *_strstr(char *haystack, char *needle)
 {
 	int i, j;
 
+	/* if a byte matches first char of needle */
+	/* interate through needle until match ends */
 	for (i = 0; haystack[i]; i++)
 	{
 		for (j = 0; needle[j] && haystack[i + j]; j++)
 			if (haystack[i + j] != needle[j])
 				break;
-		if (!needle[j])
+		if (!needle[j]) /* if matched throughout, return haystack */
 			return (&haystack[i]);
 	}
 	return (NULL);
