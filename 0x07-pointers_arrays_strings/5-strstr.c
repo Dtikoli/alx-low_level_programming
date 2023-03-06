@@ -19,7 +19,7 @@ char *_strstr(char *haystack, char *needle)
 		for (j = 0; needle[j] && haystack[i + j]; j++)
 			if (haystack[i + j] != needle[j])
 				break;
-		if (!needle[j]) /* if matched throughout, return haystack */
+		if (!needle[j]) /* if matched throughout, return to begin. of match */
 			return (&haystack[i]);
 	}
 	return (NULL);
