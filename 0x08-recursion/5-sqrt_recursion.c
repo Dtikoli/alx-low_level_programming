@@ -2,20 +2,20 @@
 
 /**
  * sqrt_help - helper function to solve _sqrt_recursion
- * @c: number to determine if square root
- * @i: incrementer to compare against `c`
+ * @i: incrementer to square root
+ * @r: incrementer to compare against `c`
  * Return: square root if natural square root, or -1 if none found
  */
 
-int sqrt_help(int c, int i)
+int sqrt_help(int n, int r)
 {
-	int square;
+	int s;
 
-	square = i * i;
-	if (square == c)
-		return (i);
-	else if (square < c)
-		return (sqrt_help(c, i + 1));
+	s = r * r;
+	if (s == n)
+		return (r);
+	else if (s < n)
+		return (sqrt_help(n, r + 1));
 	else
 		return (-1);
 }
@@ -29,5 +29,5 @@ int sqrt_help(int c, int i)
 
 int _sqrt_recursion(int n)
 {
-	return (sqrt_help(n, 1));
+	return (sqrt_help(n, 0));
 }
