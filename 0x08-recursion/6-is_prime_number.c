@@ -9,10 +9,13 @@
  */
 int prime_help(int n, int j)
 {
-	if (j == n)
-		return (1);
 	if (n % j == 0)
-		return (0);
+	{
+		if (j == n)
+			return (1);
+		else
+			return (0);
+	}
 	return (prime_help(n, j + 1));
 }
 
