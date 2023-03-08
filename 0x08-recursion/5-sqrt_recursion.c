@@ -2,8 +2,8 @@
 
 /**
  * sqrt_help - helper function to solve _sqrt_recursion
- * @i: incrementer to square root
- * @r: incrementer to compare against `c`
+ * @n: number whose square root is to be determined
+ * @r: incrementer to square root
  * Return: square root if natural square root, or -1 if none found
  */
 
