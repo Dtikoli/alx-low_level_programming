@@ -29,5 +29,5 @@ int sqrt_help(int c, int i)
 
 int _sqrt_recursion(int n)
 {
-	return (halp(n, 1));
+	return (sqrt_help(n, 1));
 }
