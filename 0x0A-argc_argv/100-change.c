@@ -10,7 +10,9 @@
 
 int main(int argc, char *argv[])
 {
-	int cents, num = 0;
+	int i, cents;
+	int num = 0;
+	int coins[] = {25, 10, 5, 2, 1}
 
 	if (argc != 2)
 	{
@@ -20,18 +22,10 @@ int main(int argc, char *argv[])
 
 	cents = atoi(argv[1]);
 
-	for (; cents > 0; num++)
+	for (i = 0; coins[i]; i++)
 	{
-		if (cents >= 25)
-			cents -= 25;
-		else if (cents >= 10)
-			cents -= 10;
-		else if (cents >= 5)
-			cents -= 5;
-		else if (cents >= 2)
-			cents -= 2;
-		else if (cents >= 1)
-			cents -= 1;
+		num += cents / coins[i];
+		cents = cents % coins[i];
 	}
 	printf("%d\n", num);
 	return (0);
