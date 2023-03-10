@@ -12,24 +12,20 @@
 
 int main(int argc, char *argv[])
 {
-	int sum, i;
+	int i, n;
 	char *p;
-	int n;
+	int sum = 0;
 
-	sum = 0;
-	if (argc > 1)
+	for (i = 1; argv[i]; i++)
 	{
-		for (i = 1; argv[i]; i++)
+		n = strtol(argv[i], &p, 10);
+		if (*p)
 		{
-			n = strtol(argv[i], &p, 10);
-			if (!*p)
-				sum += n;
-			else
-			{
-				printf("Error\n");
-				return (1);
-			}
+			printf("Error\n");
+			return (1);
 		}
+		else
+			sum += n;
 	}
 	printf("%d\n", sum);
 	return (0);
