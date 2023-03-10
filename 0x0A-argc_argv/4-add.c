@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 	char *p;
 	int sum = 0;
 
-	for (i = 1; argv[i]; i++)
+	for (i = 1; argv[i] && i < argc; i++)
 	{
 		n = strtol(argv[i], &p, 10);
 		if (*p)
