@@ -7,12 +7,11 @@
  * @argv: array of arguments
  * Return: 0
  */
-
 int main(int argc, char *argv[])
 {
 	int i, cents;
 	int num = 0;
-	int coins[] = {25, 10, 5, 2, 1}
+	int coins[] = {25, 10, 5, 2, 1};
 
 	if (argc != 2)
 	{
@@ -21,11 +20,13 @@ int main(int argc, char *argv[])
 	}
 
 	cents = atoi(argv[1]);
-
-	for (i = 0; coins[i]; i++)
+	if (cents > 0)
 	{
-		num += cents / coins[i];
-		cents = cents % coins[i];
+		for (i = 0; coins[i]; i++)
+		{
+			num += cents / coins[i];
+			cents = cents % coins[i];
+		}
 	}
 	printf("%d\n", num);
 	return (0);
