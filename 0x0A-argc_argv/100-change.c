@@ -20,13 +20,10 @@ int main(int argc, char *argv[])
 	}
 
 	cents = atoi(argv[1]);
-	if (cents > 0)
+	for (i = 0; coins[i] && cents > 0; i++)
 	{
-		for (i = 0; coins[i]; i++)
-		{
-			num += cents / coins[i];
-			cents = cents % coins[i];
-		}
+		num += cents / coins[i];
+		cents = cents % coins[i];
 	}
 	printf("%d\n", num);
 	return (0);
