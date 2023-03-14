@@ -27,8 +27,9 @@ void free_words(char **grid, int n)
 char **strtow(char *str)
 {
 	char **p;
-	int c, i, j;
-	int k = 0;
+	int c; /* end of word */
+	int i, j;
+	int k = 0; /* start of word */
 	int n = 0;
 
 	if (str == NULL || *str == '\0')
