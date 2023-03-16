@@ -10,7 +10,8 @@
 char *argstostr(int ac, char **av)
 {
 	char *str;
-	int i, j, k;
+	int i, j;
+	int k = 0;
 	int len = 0;
 
 	if (ac == 0 || av == NULL)
@@ -20,7 +21,7 @@ char *argstostr(int ac, char **av)
 	{
 		for (j = 0; av[i][j]; j++)
 			len++;
-		len++;
+		len++; /* account for null term. */
 	}
 
 	str = malloc((len + 1) * sizeof(*str));
@@ -31,17 +32,15 @@ char *argstostr(int ac, char **av)
 		return (NULL);
 	}
 
-	for (i = j = k = 0; k < len; j++, k++)
+	for (i =  0; i < ac; i++)
 	{
-		if (av[i][j] == '\0')
+		for (j = 0; av[i][j]; j++)
 		{
-			str[k] = '\n';
-			i++;
-			k++;
-			j = 0;
-		}
-		if (k < len - 1)
 			str[k] = av[i][j];
+			k++;
+		}
+		str[k] = '\n'; /* introduce a new line at the null term. */
+		k++; /* increase k after every new line */
 	}
 	str[k] = '\0';
 
