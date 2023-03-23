@@ -18,7 +18,7 @@ void _printstr(va_list list)
 	char *s;
 
 	s = va_arg(list, char *);
-	printf("%s", s == NULL ? "(nil)" : s);
+	printf("%s", s ? s : "(nil)");
 }
 
 /**
