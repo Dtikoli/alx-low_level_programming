@@ -12,7 +12,7 @@
 typedef struct datatype
 {
 	char *type;
-	void (*f)();
+	void (*f)(va_list);
 } _dt;
 
 int sum_them_all(const unsigned int n, ...);
