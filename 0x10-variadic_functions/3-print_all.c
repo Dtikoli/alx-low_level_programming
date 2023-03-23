@@ -18,9 +18,7 @@ void _printstr(va_list list)
 	char *s;
 
 	s = va_arg(list, char *);
-	if (s == NULL)
-		s = "(nil)";
-	printf("%s", s);
+	printf("%s", s == NULL ? "(nil)" : s);
 }
 
 /**
@@ -47,7 +45,7 @@ void _printint(va_list list)
  */
 void print_all(const char * const format, ...)
 {
-	unsigned int i, j;
+	unsigned int i = 0, j;
 	va_list args;
 	char *delim;
 
@@ -59,17 +57,20 @@ void print_all(const char * const format, ...)
 		{ NULL, NULL }
 	};
 
-	i = 0;
 	delim = "";
 	va_start(args, format);
-	while (format != NULL && format[i / 4] != '\0')
+	while (format && format[i])
 	{
-		j = i % 4;
-		if (list[j].type[0] == format[i / 4])
+		j = 0;
+		while (j < 4)
 		{
-			printf("%s", delim);
-			list[j].f(args);
-			delim = ", ";
+			if (format[i] == list[j].type[0])
+			{
+				printf("%s", delim);
+				list[j].f(args);
+				delim = ", ";
+			}
+			j++;
 		}
 		i++;
 	}
