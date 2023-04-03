@@ -11,9 +11,6 @@ listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 
 	unsigned int c;
 
-	if (head == NULL)
-		return (NULL);
-
 	for (c = 0; head && c < index; c++) /* iterate through list to tail */
 		head = head->next;
 
