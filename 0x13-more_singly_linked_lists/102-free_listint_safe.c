@@ -11,7 +11,10 @@ size_t free_listint_safe(listint_t **h)
 {
 	listint_t *tmp, *current;
 	size_t c;
-	
+
+	if (head == NULL || *head == NULL)
+		return (0);
+
 	current = *h;
 	for (c = 0; current; c++)
 	{
@@ -20,7 +23,10 @@ size_t free_listint_safe(listint_t **h)
 		free(tmp);
 
 		if (tmp < current)
+		{
+			free(current);
 			break;
+		}
 	}
 	*h = NULL;
 
