@@ -1,35 +1,68 @@
 #include "lists.h"
 
 /**
- * free_listint_safe - free a linked list and set the head to null
- * @h: head pointer to linked list
- * Description: This function should work for circular lists
- * Only loop through the list once
- * Return: size of the list that was free'd
+ * free_listp - frees a linked list
+ * @head: head pointer.
+ * Return: no return.
+ */
+void free_listp(listp_t **head)
+{
+	listp_t *tmp;
+
+	if (head == NULL)
+		return;
+
+	while (*head)
+	{
+		tmp = *head;
+		*head = (*head)->next;
+		free(tmp);
+	}
+}
+
+/**
+ * free_listint_safe - frees a linked list.
+ * @h: head pointer of linked list.
+ * Return: number of nodes in the list.
  */
 size_t free_listint_safe(listint_t **h)
 {
-	listint_t *tmp, *current;
 	size_t c;
+	listp_t *hpt, *prev, *nex;
+	listint_t *current;
 
-	if (h == NULL || *h == NULL)
-		return (0);
-
-	current = *h;
-	for (c = 0; current; c++)
+	hpt = NULL;
+	for (c = 0; *h; c++)
 	{
-		tmp = current;
-		current = current->next;
-		free(tmp);
+		prev = malloc(sizeof(listp_t));
 
-		if (tmp < current)
+		if (prev == NULL)
+			exit(98);
+
+		prev->p = (void *)*h;
+		prev->next = hpt;
+		hpt = prev;
+
+		nex = hpt;
+
+		while (nex->next)
 		{
-			free(current);
-			break;
+			nex = nex->next;
+			if (*h == nex->p)
+			{
+				*h = NULL;
+				free_listp(&hpt);
+				return (c);
+			}
 		}
-	}
-	*h = NULL;
 
+		current = *h;
+		*h = (*h)->next;
+		free(current);
+	}
+
+	*h = NULL;
+	free_listp(&hpt);
 	return (c);
 }
 
