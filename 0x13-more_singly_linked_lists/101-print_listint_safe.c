@@ -1,32 +1,65 @@
 #include "lists.h"
 
 /**
- * print_listint_safe - Print a linked lists with memory addresses
- * @head: linked list
- * Description: Go through the list only once.
- * Return: number of nodes in list. If fails, exit with status 98.
+ * free_listp - frees a linked list
+ * @head: head pointer.
+ * Return: no return.
+ */
+void free_listp(listp_t **head)
+{
+	listp_t *tmp;
+
+	if (head == NULL)
+		return;
+
+	while (*head)
+	{
+		tmp = *head;
+		*head = (*head)->next;
+		free(tmp);
+	}
+}
+
+/**
+ * print_listint_safe - prints a linked list.
+ * @head: linked list.
+ * Return: number of nodes in the list.
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t c;
-	const listint_t *tmp;
+	size_t c = 0;
+	listp_t *hpt, *prev, *nex;
 
-	if (head == NULL)
-		exit(98);
-
+	hpt = NULL;
 	for (c = 0; head; c++)
 	{
-		tmp = head;
-		head = head->next;
-		printf("[%p] %d\n", (void *)tmp, tmp->n);
+		prev = malloc(sizeof(listp_t));
 
-		if (tmp <= head)
+		if (prev == NULL)
+			exit(98);
+
+		prev->p = (void *)head;
+		prev->next = hpt;
+		hpt = prev;
+
+		nex = hpt;
+
+		while (nex->next)
 		{
-			printf("-> [%p] %d\n", (void *)head, head->n);
-			break;
+			nex = nex->next;
+			if (head == nex->p)
+			{
+				printf("-> [%p] %d\n", (void *)head, head->n);
+				free_listp(&hpt);
+				return (c);
+			}
 		}
+
+		printf("[%p] %d\n", (void *)head, head->n);
+		head = head->next;
 	}
 
+	free_listp(&hpt);
 	return (c);
 }
 
