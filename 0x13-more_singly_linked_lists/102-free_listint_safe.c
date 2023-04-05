@@ -1,68 +1,85 @@
 #include "lists.h"
 
 /**
- * free_listp - frees a linked list
- * @head: head pointer.
- * Return: no return.
+ * loop_listint_len - finds the length of a loop in a linked list
+ * @head: linked list
+ * Return: the number of nodes in the loop, or 0 if there is no loop
  */
-void free_listp(listp_t **head)
+size_t loop_listint_len(listint_t *head)
 {
-	listp_t *tmp;
+	listint_t *lag, *lead;
+	size_t c = 1;
 
-	if (head == NULL)
-		return;
+	/* If the list is empty or has only one node, there is no loop */
+	if (head == NULL || head->next == NULL)
+		return (0);
 
-	while (*head)
+	lag = lead = head;
+
+	/* Floyd's cycle-finding algorithm */
+	while (lag && lead && lead->next)
 	{
-		tmp = *head;
-		*head = (*head)->next;
-		free(tmp);
+		lag = lag->next;
+		lead = lead->next->next;
+		if (lag == lead)
+		{
+			lag = head;
+			while (lag != lead)
+			{
+				c++;
+				lag = lag->next;
+				lead = lead->next;
+			}
+
+			lag = lag->next;
+			while (lag != lead)
+			{
+				c++;
+				lag = lag->next;
+			}
+
+			return (c);
+		}
+
 	}
+
+	return (0);
 }
 
 /**
- * free_listint_safe - frees a linked list.
- * @h: head pointer of linked list.
- * Return: number of nodes in the list.
+ * free_listint_safe - frees a linked list with a loop safely.
+ * @h: head pointer of the linked list.
+ * Return: The number of nodes in the list.
  */
 size_t free_listint_safe(listint_t **h)
 {
-	size_t c;
-	listp_t *hpt, *prev, *nex;
-	listint_t *current;
+	listint_t *tmp;
+	size_t c, i;
 
-	hpt = NULL;
-	for (c = 0; *h; c++)
+	c = loop_listint_len(*h);
+
+	if (!c) /* same as if c = 0 */
 	{
-		prev = malloc(sizeof(listp_t));
-
-		if (prev == NULL)
-			exit(98);
-
-		prev->p = (void *)*h;
-		prev->next = hpt;
-		hpt = prev;
-
-		nex = hpt;
-
-		while (nex->next)
+		for (; *h; c++)
 		{
-			nex = nex->next;
-			if (*h == nex->p)
-			{
-				*h = NULL;
-				free_listp(&hpt);
-				return (c);
-			}
+			tmp = *h;
+			*h = (*h)->next;
+			free(tmp);
+		}
+	}
+	else
+	{
+		for (i = 0; i < c; i++)
+		{
+			tmp = *h;
+			*h = (*h)->next;
+			free(tmp);
 		}
 
-		current = *h;
-		*h = (*h)->next;
-		free(current);
+		*h = NULL;
 	}
 
-	*h = NULL;
-	free_listp(&hpt);
 	return (c);
 }
+
 
