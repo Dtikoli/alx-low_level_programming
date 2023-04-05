@@ -8,7 +8,7 @@
 size_t loop_listint_len(listint_t *head)
 {
 	listint_t *lag, *lead;
-	size_t c = 1;
+	size_t c = 0;
 
 	/* If the list is empty or has only one node, there is no loop */
 	if (head == NULL || head->next == NULL)
@@ -23,6 +23,8 @@ size_t loop_listint_len(listint_t *head)
 		lead = lead->next->next;
 		if (lag == lead)
 		{
+			c++;
+
 			lag = head;
 			while (lag != lead)
 			{
