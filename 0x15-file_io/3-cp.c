@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 {
 	int in_fd, out_fd;
 	int r_count, w_count;
-	char *buffer[MAXBUFF];
+	char buffer[MAXBUFF];
 
 	if (argc != 3)
 		_exit_status(97, NULL, 0);
