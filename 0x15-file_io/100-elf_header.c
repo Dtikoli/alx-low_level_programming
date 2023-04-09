@@ -87,7 +87,7 @@ void _osabi_print(char *p)
  */
 void _type_print(char *p)
 {
-	char type = p[16];
+	char type;
 
 	if (p[5] == 1)
 		type = p[16];
@@ -201,7 +201,21 @@ int _elf_check(char *p)
 }
 
 /**
- * main - check the code for Holberton School students.
+ * close_fd - Closes an ELF file. If fails, exit 98
+ * @fd: file descriptor of the ELF file.
+ */
+void close_fd(int fd)
+{
+	if (close(fd) == -1)
+	{
+		dprintf(STDERR_FILENO,
+			"Error: Can't close fd %d\n", fd);
+		exit(98);
+	}
+}
+
+/**
+ * main - Entry  point.
  * @argc: number of CL arguments.
  * @argv: array of CL arguments.
  * Return: Always 0.
@@ -242,7 +256,7 @@ int main(int argc, char *argv[])
 
 	_syst_check(p);
 
-	close(fd);
+	close_fd(fd);
 
 	return (0);
 }
