@@ -201,10 +201,10 @@ int _elf_check(char *p)
 }
 
 /**
- * close_fd - Closes an ELF file. If fails, exit 98
+ * _close_fd - Closes an ELF file. If fails, exit 98
  * @fd: file descriptor of the ELF file.
  */
-void close_fd(int fd)
+void _close_fd(int fd)
 {
 	if (close(fd) == -1)
 	{
@@ -248,7 +248,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	if (_elf_check(p) != 1)
+	if (!_elf_check(p))
 	{
 		dprintf(STDERR_FILENO, "Err: It is not an ELF\n");
 		exit(98);
@@ -256,7 +256,7 @@ int main(int argc, char *argv[])
 
 	_syst_check(p);
 
-	close_fd(fd);
+	_close_fd(fd);
 
 	return (0);
 }
