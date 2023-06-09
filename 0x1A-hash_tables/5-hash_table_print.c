@@ -1,4 +1,4 @@
-#include "./hash_tables.h"
+#include "hash_tables.h"
 
 /**
  * hash_table_print - Prints a a key/value pair in order of appearance.
