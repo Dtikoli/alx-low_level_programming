@@ -14,23 +14,23 @@ void shash_table_delete(shash_table_t *ht);
  */
 shash_table_t *shash_table_create(unsigned long int size)
 {
-	shash_table_t *ht;
+	shash_table_t *new_ht;
 	unsigned long int idx;
 
-	ht = malloc(sizeof(shash_table_t));
-	if (!ht)
+	new_ht = malloc(sizeof(shash_table_t));
+	if (!new_ht)
 		return (NULL);
 
-	ht->size = size;
-	ht->array = malloc(sizeof(shash_node_t *) * size);
-	if (!ht->array)
+	new_ht->size = size;
+	new_ht->array = malloc(sizeof(shash_node_t *) * size);
+	if (!new_ht->array)
 		return (NULL);
 	for (idx = 0; idx < size; idx++)
-		ht->array[idx] = NULL;
-	ht->shead = NULL;
-	ht->stail = NULL;
+		new_ht->array[idx] = NULL;
+	new_ht->shead = NULL;
+	new_ht->stail = NULL;
 
-	return (ht);
+	return (new_ht);
 }
 
 /**
@@ -59,7 +59,6 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	{
 		if (strcmp(temp->key, key) == 0)
 		{
-			free(temp->value);
 			temp->value = val_copy;
 			return (1);
 		}
